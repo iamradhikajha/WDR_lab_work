@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <title>To Do List App</title>
+    <script>
+      var task_array = [];
+
+      function addtask() {
+        var data = document.getElementById("task").value.trim();
+        var errorMsg = document.getElementById("error_msg");
+
+        if (data !== "") {
+          errorMsg.innerText = "";
+          task_array.push(data);
+          displayTask();
+        } else {
+          errorMsg.innerText = "Blank text not allowed";
+          errorMsg.style.color = "red";
+        }
+
+        document.getElementById("task").value = "";
+      }
+
+      function displayTask() {
+        var list = document.getElementById("tasklist");
+        list.innerHTML = "";
+
+        for (var i = 0; i < task_array.length; i++) {
+          var listitem = document.createElement("li");
+          listitem.textContent = task_array[i];
+
+          var completebtn = document.createElement("button");
+          completebtn.innerText = "Mark as Complete";
+          completebtn.onclick = function (e) {
+            e.target.parentElement.style.color = "green";
+          };
+
+          var deletebtn = document.createElement("button");
+          deletebtn.innerText = "Delete";
+          deletebtn.onclick = (function (index) {
+            return function () {
+              task_array.splice(index, 1);
+              displayTask();
+            };
+          })(i);
+
+          listitem.appendChild(document.createTextNode(" "));
+          listitem.appendChild(completebtn);
+          listitem.appendChild(document.createTextNode(" "));
+          listitem.appendChild(deletebtn);
+          list.appendChild(listitem);
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <h2>To Do List App</h2>
+    <input type="text" id="task" placeholder="Enter task" required />
+    <input type="button" value="Add Task" onclick="addtask()" />
+    <div id="error_msg"></div>
+    <ul id="tasklist"></ul>
+  </body>
+</html>
