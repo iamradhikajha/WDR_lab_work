@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Circle Area</title>
+  </head>
+  <body>
+    <h2>Circle Area Calculator</h2>
+    <p id="result"></p>
+
+    <script>
+      const radius = parseFloat(prompt("Enter radius of circle (in cm): ", 0));
+      const output = document.getElementById("result");
+
+      if (isNaN(radius)) {
+        alert("It is not a numeric value!");
+      } else if (radius < 0) {
+        output.innerHTML = `
+          Radius: ${radius} cm <br>
+          <span style="color:red;">Radius cannot be negative. Circle not possible.</span>
+        `;
+      } else {
+        const area = Math.PI * radius * radius;
+        output.innerHTML = `
+          Radius: ${radius} cm <br>
+          Area: ${area.toFixed(2)} sq.cm
+        `;
+      }
+    </script>
+  </body>
+</html>

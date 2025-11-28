@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Interest</title>
+    <script>
+      function calculateSI() {
+        document.getElementById("result").innerText = "";
+        const principal = parseFloat(
+          document.getElementById("principal").value
+        );
+        const rate = parseFloat(document.getElementById("rate").value);
+        const time = parseFloat(document.getElementById("time").value);
+        const si = (principal * rate * time) / 100;
+        document.getElementById("result").innerText = "Simple Interest : " + si;
+      }
+
+      function calculateAmount() {
+        document.getElementById("result").innerText = "";
+        const principal = parseFloat(
+          document.getElementById("principal").value
+        );
+        const rate = parseFloat(document.getElementById("rate").value);
+        const time = parseFloat(document.getElementById("time").value);
+        const si = (principal * rate * time) / 100;
+        const amount = principal + si;
+        document.getElementById("result").innerText =
+          "Total Amount : " + amount;
+      }
+    </script>
+  </head>
+
+  <body>
+    <h2>----- Simple Interest -----</h2>
+    Principal:
+    <input type="number" id="principal" min="0" step="0.01" required />
+    <br /><br />
+    Rate (%):
+    <input type="number" id="rate" min="0" step="0.01" required />
+    <br /><br />
+    Time (years):
+    <input type="number" id="time" min="0" step="0.01" required />
+    <br /><br />
+    <input type="button" value="Simple Interest" onclick="calculateSI()" />
+    <input type="button" value="Total Amount" onclick="calculateAmount()" />
+    <br /><br />
+    <div id="result"></div>
+  </body>
+</html>
