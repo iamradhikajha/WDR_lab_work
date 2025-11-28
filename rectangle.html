@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rectangle</title>
+    <script>
+      function calculateArea() {
+        document.getElementById("result").innerText = "";
+        const length = parseFloat(
+          document.getElementById("first_number").value
+        );
+        const breadth = parseFloat(
+          document.getElementById("second_number").value
+        );
+        const area = length * breadth;
+        document.getElementById("result").innerText =
+          "Area of Rectangle : " + area;
+      }
+
+      function calculatePerimeter() {
+        document.getElementById("result").innerText = "";
+        const length = parseFloat(
+          document.getElementById("first_number").value
+        );
+        const breadth = parseFloat(
+          document.getElementById("second_number").value
+        );
+        const perimeter = 2 * (length + breadth);
+        document.getElementById("result").innerText =
+          "Perimeter of Rectangle : " + perimeter;
+      }
+    </script>
+  </head>
+
+  <body>
+    <h2>----- Rectangle -----</h2>
+    Length:
+    <input type="number" id="first_number" min="0" step="0.01" required />
+    <br /><br />
+    Breadth:
+    <input type="number" id="second_number" min="0" step="0.01" required />
+    <br /><br />
+    <input type="button" value="Area" onclick="calculateArea()" />
+    <input type="button" value="Perimeter" onclick="calculatePerimeter()" />
+    <br /><br />
+    <div id="result"></div>
+  </body>
+</html>
