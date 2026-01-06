@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>To Do List</title>
+    <script>
+      var task_array = [];
+
+      function addtask() {
+        var data = document.getElementById("task").value.trim();
+        var errorMsg = document.getElementById("error_msg");
+
+        if (data !== "") {
+          errorMsg.innerText = "";
+          task_array.push(data);
+          displayTask(data);
+        } else {
+          errorMsg.innerText = "Blank text not allowed";
+          errorMsg.style.color = "red";
+        }
+
+        document.getElementById("task").value = "";
+      }
+
+      function displayTask(task_data) {
+        var listitem = document.createElement("li");
+        listitem.textContent = task_data;
+        document.getElementById("tasklist").appendChild(listitem);
+      }
+    </script>
+  </head>
+
+  <body>
+    <input type="text" id="task" placeholder="Enter task" required />
+    <input type="button" value="Add Task" onclick="addtask()" />
+    <br />
+    <div id="error_msg"></div>
+    <br /><br />
+    <ul id="tasklist"></ul>
+  </body>
+</html>
